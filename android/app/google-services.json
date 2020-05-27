@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1013267920598",
+    "firebase_url": "https://student-service-request-app.firebaseio.com",
+    "project_id": "student-service-request-app",
+    "storage_bucket": "student-service-request-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1013267920598:android:8ea1ebf5641528fee07b77",
+        "android_client_info": {
+          "package_name": "nambh.ssrapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1013267920598-49gtgodvqu84as88fojn0tu33hq4urc0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nambh.ssrapp",
+            "certificate_hash": "32f9fd3b22e8176e0d583f1edb4983227a73b356"
+          }
+        },
+        {
+          "client_id": "1013267920598-ud8us5l79ifh9s590dl3htol5kpgaflj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUMePBLmWFGKbdAJrdCaGEknE1luK1ftA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1013267920598-ud8us5l79ifh9s590dl3htol5kpgaflj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
