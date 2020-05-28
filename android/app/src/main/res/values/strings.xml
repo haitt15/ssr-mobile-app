@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<resources>
+    <string name="app_name">Student Service Request</string>
+    <string name="facebook_app_id">2587325691505483</string>
+    <string name="fb_login_protocol_scheme">fb2587325691505483</string>
+
+</resources>

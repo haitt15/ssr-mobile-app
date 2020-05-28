@@ -255,10 +255,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: <Widget>[
             _btnSocialStyle(
               () async {
-                print("a");
                 bool result = await AuthService().signInWithGoogle();
-                print("b");
-
                 if (!result) {
                   print("login fail");
                 }
@@ -268,7 +265,12 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             _btnSocialStyle(
-              () => print('Login with Facebook'),
+              () async {
+                bool result = await AuthService().signInWithFacebook();
+                if (!result) {
+                  print("login fail");
+                }
+              },
               AssetImage(
                 'assets/images/facebook.jpg',
               ),
