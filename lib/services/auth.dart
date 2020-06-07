@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:http/http.dart' as http;
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -22,6 +25,7 @@ class AuthService {
     }
   }
 
+  var response;
   Future<bool> signInWithGoogle() async {
     try {
       GoogleSignInAccount account = await googleSignIn.signIn();
@@ -37,14 +41,43 @@ class AuthService {
       assert(!user.isAnonymous);
       assert(await user.getIdToken() != null);
 
-      FirebaseUser currentUser = await _auth.currentUser();
-      assert(user.uid == currentUser.uid);
-      print('${user.displayName}');
+//      http.Response response;
+      _auth.currentUser().then((user) => {
+            if (user != null)
+              {
+                user.getIdToken().then((token) => {
+                      print(token.token),
+//                      response = await http.post(
+//                        'https://webapi20200601090708.azurewebsites.net/api/v1/Auth/Google',
+//                        headers: <String, String>{
+//                          'Content-Type': 'application/json; charset=UTF-8',
+//                        },
+//                        body: json
+//                            .encode(<String, String>{'IdToken': token.token}),
+//                      ),
+                      loginGoogle(token.token)
+                    })
+
+              }
+          });
       return true;
     } catch (e) {
       print("Login error: " + e.toString());
       return false;
     }
+  }
+  void loginGoogle(String idToken) async {
+    String data;
+    response = await http.post(
+      'https://webapi20200601090708.azurewebsites.net/api/v1/Auth/Google',
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: json.encode(<String, String>{'IdToken': idToken}),
+    );
+    assert(response.statusCode == 200);
+    data = jsonEncode(response.body);
+    print(data);
   }
 
   Future<bool> signInWithFacebook() async {

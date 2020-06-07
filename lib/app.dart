@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ssrapp/screens/login_screen.dart';
 import 'package:ssrapp/screens/progress_bar.dart';
 import 'package:ssrapp/screens/home_screen.dart';
-
+import 'package:ssrapp/screens/navigation_screen.dart';
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainScreen(),
+      home: MainScreen()
     );
   }
 }
@@ -26,7 +26,7 @@ class MainScreen extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting)
           return ProgressBarScreen();
         if (!snapshot.hasData || snapshot.data == null) return LoginScreen();
-        return HomeScreen();
+        return NavigationScreen();
       },
     );
   }

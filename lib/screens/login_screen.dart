@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ssrapp/screens/signup_screen.dart';
 import 'package:ssrapp/services/auth.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
   bool result;
-
+  String data;
   TextEditingController _txtEmail;
   TextEditingController _txtPassword;
 
@@ -108,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Stack(
                 alignment: AlignmentDirectional.centerEnd,
                 children: <Widget>[
-                  TextField(
+                  TextFormField(
                     controller: _txtPassword,
                     obscureText: true,
                     style: TextStyle(
@@ -180,6 +182,8 @@ class _LoginScreenState extends State<LoginScreen> {
             onTap: () async {
               if (_txtEmail.text.isEmpty || _txtPassword.text.isEmpty) {
                 return print("Can't empty email or password");
+              } else {
+
               }
               bool result = await AuthService()
                   .signInWithEmail(_txtEmail.text, _txtPassword.text);
