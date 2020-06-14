@@ -1,6 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:ssrapp/services/auth.dart';
+class GridHome extends StatefulWidget {
+  @override
+  _GridHomeState createState() => _GridHomeState();
+}
 
-class GridHome extends StatelessWidget {
+class _GridHomeState extends State<GridHome> {
   Items item1 = new Items(
       title: "Suspend",
       subtitle: "Suspend one semester",
@@ -13,24 +20,28 @@ class GridHome extends StatelessWidget {
     event: "4 Request",
     img: "assets/images/register2.png",
   );
+
   Items item3 = new Items(
     title: "Suspend",
     subtitle: "Suspend subject",
     event: "3 Request",
     img: "assets/images/suspend2.png",
   );
+
   Items item4 = new Items(
     title: "Register",
     subtitle: "Register to improve mark",
     event: " 10 Request",
     img: "assets/images/register1.png",
   );
+
   Items item5 = new Items(
     title: "Register",
     subtitle: "Register extra courses",
     event: "100 Request",
     img: "assets/images/register3.png",
   );
+
   Items item6 = new Items(
     title: "Cancel",
     subtitle: "Cancel registration",
@@ -38,9 +49,36 @@ class GridHome extends StatelessWidget {
     img: "assets/images/cancel.png",
   );
 
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  String _message = '';
+  _registerOnFirebase() {
+    _firebaseMessaging.subscribeToTopic("all");
+    _firebaseMessaging.getToken().then((token) => print(token));
+  }
+
+  @override
+  void initState() {
+    _registerOnFirebase();
+    getMessage();
+    super.initState();
+  }
+  void getMessage() {
+    _firebaseMessaging.configure(
+        onMessage: (Map<String, dynamic> message) async {
+          print('received message');
+          setState(() => _message = message["notification"]["body"]);
+        }, onResume: (Map<String, dynamic> message) async {
+      print('on resume $message');
+      setState(() => _message = message["notification"]["body"]);
+    }, onLaunch: (Map<String, dynamic> message) async {
+      print('on launch $message');
+      setState(() => _message = message["notification"]["body"]);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     List<Items> myList = [item1, item2, item3, item4, item5, item6];
+
     return Stack(
       children: <Widget>[
         Flexible(

@@ -24,7 +24,9 @@ class AuthService {
       return false;
     }
   }
+void getUid(){
 
+}
   var response;
   Future<bool> signInWithGoogle() async {
     try {
@@ -37,7 +39,7 @@ class AuthService {
 
       AuthResult result = await _auth.signInWithCredential(credential);
       FirebaseUser user = result.user;
-
+      print("Uid: " + user.uid);
       assert(!user.isAnonymous);
       assert(await user.getIdToken() != null);
 
@@ -47,14 +49,6 @@ class AuthService {
               {
                 user.getIdToken().then((token) => {
                       print(token.token),
-//                      response = await http.post(
-//                        'https://webapi20200601090708.azurewebsites.net/api/v1/Auth/Google',
-//                        headers: <String, String>{
-//                          'Content-Type': 'application/json; charset=UTF-8',
-//                        },
-//                        body: json
-//                            .encode(<String, String>{'IdToken': token.token}),
-//                      ),
                       loginGoogle(token.token)
                     })
 
@@ -69,7 +63,7 @@ class AuthService {
   void loginGoogle(String idToken) async {
     String data;
     response = await http.post(
-      'https://webapi20200601090708.azurewebsites.net/api/v1/Auth/Google',
+      'https://ssrapi.azurewebsites.net/api/v1/Auth/Google',
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

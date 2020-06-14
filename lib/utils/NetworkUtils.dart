@@ -1,0 +1,1 @@
+const SIGN_IN_URL = "https://ssrapi.azurewebsites.net/api/v1/Auth/Google?fbclid=IwAR2YDBoIkUfi90OKeDi1bDxq92uYmKJgArlShNfiBJp9K-d80PQW7bSZT2Q";

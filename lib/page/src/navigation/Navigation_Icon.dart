@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
-import 'grid_home.dart';
-import 'profile_screen.dart';
+import 'file:///D:/FPT%20University/CN6/PRM/SSR_App/ssr_app/lib/page/src/profile/Profile_View.dart';
+
+
+import '../service/Home_View.dart';
 
 class NavigationIcon {
   final String title;
@@ -25,9 +27,12 @@ class NavigationIconScreen extends StatefulWidget {
 
   @override
   _NavigationIconScreenState createState() => _NavigationIconScreenState();
+
+
 }
 
 class _NavigationIconScreenState extends State<NavigationIconScreen> {
+
   List<Widget> listWidget = new List<Widget>();
   int curIndex = 0;
 
@@ -52,30 +57,30 @@ class _NavigationIconScreenState extends State<NavigationIconScreen> {
 
     listWidget.add(GridHome());
     listWidget.add(GridHome());
-    listWidget.add(ProfileScreen());
+    listWidget.add(GridHome());
     listWidget.add(ProfileScreen());
 
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 1080, height: 1920, allowFontScaling: true);
-//    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-//      systemNavigationBarColor: Colors.blue, // navigation bar color
-//      statusBarColor: Colors.pink, // status bar color
-//    ));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarBrightness: Brightness.light,
+    ));
 
     return Scaffold(
       resizeToAvoidBottomPadding: true,
-//      backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40),
         child: AppBar(
-            title: Text('Service Detail',
-                style: TextStyle(fontSize: ScreenUtil().setSp(55))),
-            backgroundColor: Color.fromRGBO(255, 156, 24, 1),
-            brightness: Brightness.light,
+          title: Text('Service Detail',
+              style: TextStyle(fontSize: ScreenUtil().setSp(55))),
+          backgroundColor: Color.fromRGBO(255, 156, 24, 1),
         ),
       ),
       body: listWidget.elementAt(curIndex),
+
 //      body: SingleChildScrollView(
 //        child: EditProfileScreen(),
 //      )
@@ -85,3 +90,5 @@ class _NavigationIconScreenState extends State<NavigationIconScreen> {
     );
   }
 }
+
+
