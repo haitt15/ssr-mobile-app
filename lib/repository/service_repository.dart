@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class ServiceRepository {
   Future<dynamic> getAllService() async {
     var response = await http.get(
-      'https://ssrapi.azurewebsites.net/api/v1/Services',
+      'https://ssrapiv2.azurewebsites.net/api/v1/Services',
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

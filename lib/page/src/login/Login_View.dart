@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ssrapp/app.dart';
 import 'package:ssrapp/main.dart';
 import 'package:ssrapp/page/src/profile/Profile_ViewModel.dart';
@@ -410,17 +411,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
     LoginViewModel loginViewModel = LoginViewModel();
     var userInfo;
-    await loginViewModel
-        .signInWithGoogle()
-        .then((value) => {userInfo = value});
+    await loginViewModel.signInWithGoogle().then((value) => {userInfo = value});
 
     if (userInfo != null) {
       storage.write(key: "UserInfo", value: userInfo);
-      ProfileViewModel profileViewModel = ProfileViewModel();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('UserInfo', userInfo);
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => NavigationScreen.fromBase64(userInfo)));
+          context, MaterialPageRoute(builder: (context) => NavigationScreen()));
     } else {
       _showMsg(context, "Please sign in with FPT Education mail");
     }

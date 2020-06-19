@@ -10,7 +10,7 @@ class UserRepository {
   static Future<String> callAPILoginGoogle(
       String idToken, String fcmToken) async {
     var response = await http.post(
-      'https://ssrapi.azurewebsites.net/api/v1/Auth/Google',
+      'https://ssrapiv2.azurewebsites.net/api/v1/Auth/Google',
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

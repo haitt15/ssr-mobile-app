@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ssrapp/repository/user_repository.dart';
 
 import '../../../main.dart';
@@ -43,6 +44,8 @@ class LoginViewModel extends Model {
   }
 
   Future<void> signOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove("UserInfo");
     storage.delete(key: "UserInfo");
     return Future.wait([
       _firebaseAuth.signOut(),

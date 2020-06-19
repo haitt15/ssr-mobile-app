@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'file:///D:/FPT%20University/CN6/PRM/SSR_App/ssr_app/lib/page/src/navigation/Navigation_View.dart';
 import 'package:ssrapp/page/progress_bar.dart';
 import 'file:///D:/FPT%20University/CN6/PRM/SSR_App/ssr_app/lib/page/src/login/Login_View.dart';
@@ -23,9 +24,17 @@ class MyApp extends StatelessWidget {
 
 class MainScreen extends StatelessWidget {
   Future<String> get jwtOrEmpty async {
-    var userInfo = await storage.read(key: "UserInfo");
-    if (userInfo == null) return "";
-    return userInfo;
+//    var userInfo = await storage.read(key: "UserInfo");
+//    if (userInfo == null) return "";
+//    return userInfo;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var userInfo=  prefs.getString('UserInfo') ?? "";
+//    bool CheckValue = prefs.containsKey('UserInfo');
+//    if (CheckValue) {
+//      var userInfo = prefs.getString('UserInfo');
+//      return userInfo;
+//    }
+  return userInfo;
   }
 
   @override
@@ -41,7 +50,6 @@ class MainScreen extends StatelessWidget {
         if (snapshot.data != "") {
           var userInfo = jsonDecode(snapshot.data);
           var jwt = userInfo['token'].split('.');
-
           if (jwt.length != 3) {
             return LoginScreen();
           } else {
