@@ -69,7 +69,7 @@ class RequestDetailState extends State<Service_Detail> {
                   ],
                 )),
             SizedBox(
-              height: 20,
+              height: 12,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 0),
@@ -79,7 +79,7 @@ class RequestDetailState extends State<Service_Detail> {
                   color: Color.fromRGBO(200, 201, 196, 1)),
             ),
             SizedBox(
-              height: 20,
+              height: 12,
             ),
             Padding(
                 padding: const EdgeInsets.only(left: 0, top: 0),
@@ -151,7 +151,7 @@ class RequestDetailState extends State<Service_Detail> {
                   ],
                 )),
             SizedBox(
-              height: 25,
+              height: 12,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 0),
@@ -161,7 +161,7 @@ class RequestDetailState extends State<Service_Detail> {
                   color: Color.fromRGBO(200, 201, 196, 1)),
             ),
             SizedBox(
-              height: 15,
+              height: 12,
             ),
             Padding(
                 padding: const EdgeInsets.only(left: 0),
@@ -227,21 +227,42 @@ class RequestDetailState extends State<Service_Detail> {
             SizedBox(
               height: 15,
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: RaisedButton(
-                onPressed: () {},
-                child: const Text('Request', style: TextStyle(fontSize: 23)),
-                color: Colors.blue,
-                textColor: Colors.white,
-                elevation: 5,
-                splashColor: Colors.white70,
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: TextFormField(
+                keyboardType: TextInputType.multiline,
+                maxLines: 5,
+                maxLength: 500,
+                style: TextStyle(
+                  fontSize: 19.0
+                ),
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(fontSize: 23.0),
+                  labelText: 'Request Description',
+                  hintText: "Write description for your request...",
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ],
         ),
       ),
-
+      bottomNavigationBar: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: 10.0),
+            child: RaisedButton(
+              onPressed: () {},
+              child: const Text('Request', style: TextStyle(fontSize: 23)),
+              color: Colors.blue,
+              textColor: Colors.white,
+              elevation: 5,
+              splashColor: Colors.white70,
+            ),
+          )
+        ],
+      ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

@@ -33,10 +33,11 @@ class RequestHistoryState extends State<Request_History> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 20,right: 15,left: 15,bottom: 5),
+              padding: const EdgeInsets.only(
+                  top: 20, right: 15, left: 15, bottom: 5),
               child: Container(
                 width: double.infinity,
-                height: 110,
+                height: 190,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5.0),
@@ -73,12 +74,12 @@ class RequestHistoryState extends State<Request_History> {
                             ),
                             Center(
                               child: Text(
-                                "--- " + "In Progress" + " ---",
+                                "Date Request: " + "30/06/2020",
                                 style: TextStyle(
-                                    color: Colors.grey[700],
+                                    color: Colors.grey[800],
                                     fontFamily: "Roboto",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600),
                               ),
                             ),
                             Center(
@@ -91,16 +92,35 @@ class RequestHistoryState extends State<Request_History> {
                                     fontWeight: FontWeight.w700),
                               ),
                             ),
-
                             Center(
                               child: Text(
-                                "Tap for more info",
+                                "--------- " + "In Progress" + " --------",
                                 style: TextStyle(
-                                    color: Colors.grey[500],
+                                    color: Colors.grey[600],
                                     fontFamily: "Roboto",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w400),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600),
                               ),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Title: " + "Thay đổi trạng thái",
+                              style: TextStyle(
+                                  color: Colors.grey[800],
+                                  fontFamily: "Roboto",
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            Text(
+                              "Content: " +
+                                  "Nhan vien A da thay doi trang thai tu waiting thanh in progress",
+                              style: TextStyle(
+                                  color: Colors.grey[600],
+                                  fontFamily: "Roboto",
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500),
                             ),
                           ],
                         ),

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
 // TITLE: Thay doi trang thai
 // Content: Nhan vien A da thay doi trang thai tu waiting thanh in progress
 // TITLE: Thay doi
-// Content: Nhan vien A da thay doi trang thai tu waiting thanh in progres
+// Content: Nhan vien A da thay doi trang thai tu waiting thanh in progress
 class MainScreen extends StatelessWidget {
   Future<String> get jwtOrEmpty async {
 //    var userInfo = await storage.read(key: "UserInfo");
