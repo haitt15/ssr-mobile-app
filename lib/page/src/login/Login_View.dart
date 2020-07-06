@@ -9,7 +9,7 @@ import 'package:ssrapp/main.dart';
 import 'package:ssrapp/page/src/profile/Profile_ViewModel.dart';
 import '../navigation/Navigation_View.dart';
 import '../../signup_screen.dart';
-import 'file:///D:/FPT%20University/CN6/PRM/SSR_App/ssr_app/lib/page/src/login/Login_ViewModel.dart';
+import 'package:ssrapp/page/src/login/Login_ViewModel.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

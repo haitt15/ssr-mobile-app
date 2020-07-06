@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
-import 'file:///D:/FPT%20University/CN6/PRM/SSR_App/ssr_app/lib/page/src/profile/Profile_View.dart';
+import 'package:ssrapp/page/src/profile/Profile_View.dart';
 
 
 import '../service/Home_View.dart';

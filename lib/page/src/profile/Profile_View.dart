@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ssrapp/app.dart';
-import 'file:///D:/FPT%20University/CN6/PRM/SSR_App/ssr_app/lib/page/src/profile/menu_button.dart';
+import 'package:ssrapp/page/src/profile/menu_button.dart';
 import 'package:ssrapp/page/src/login/Login_ViewModel.dart';
 import 'package:ssrapp/page/src/profile/Profile_ViewModel.dart';
 

@@ -3,9 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'file:///D:/FPT%20University/CN6/PRM/SSR_App/ssr_app/lib/page/src/navigation/Navigation_View.dart';
+import 'package:ssrapp/page/serviceDetail_screen.dart';
+import 'package:ssrapp/page/src/navigation/Navigation_View.dart';
 import 'package:ssrapp/page/progress_bar.dart';
-import 'file:///D:/FPT%20University/CN6/PRM/SSR_App/ssr_app/lib/page/src/login/Login_View.dart';
+import 'package:ssrapp/page/src/login/Login_View.dart';
+import 'package:ssrapp/page/src/request/Request_View.dart';
+import 'package:ssrapp/page/src/request_detail/RequestDetail_View.dart';
+import 'package:ssrapp/page/src/service_detail/ServiceDetail_View.dart';
+import 'package:ssrapp/page/src/request_history/RequestHistory_View.dart';
 
 import 'main.dart';
 
@@ -18,10 +23,13 @@ class MyApp extends StatelessWidget {
           primaryColorDark: Colors.black,
           primarySwatch: Colors.blue,
         ),
-        home: MainScreen());
+        home: Service_Detail());
   }
 }
-
+// TITLE: Thay doi trang thai
+// Content: Nhan vien A da thay doi trang thai tu waiting thanh in progress
+// TITLE: Thay doi
+// Content: Nhan vien A da thay doi trang thai tu waiting thanh in progres
 class MainScreen extends StatelessWidget {
   Future<String> get jwtOrEmpty async {
 //    var userInfo = await storage.read(key: "UserInfo");
