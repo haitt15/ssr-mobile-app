@@ -36,7 +36,7 @@ class RequestState extends State<Request> {
               padding: const EdgeInsets.only(top: 20,right: 15,left: 15,bottom: 5),
               child: Container(
                 width: double.infinity,
-                height: 110,
+                height: 120,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5.0),
@@ -87,85 +87,7 @@ class RequestState extends State<Request> {
                                 style: TextStyle(
                                     color: Colors.grey[800],
                                     fontFamily: "Roboto",
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ),
-
-                            Center(
-                              child: Text(
-                                "Tap for more info",
-                                style: TextStyle(
-                                    color: Colors.grey[500],
-                                    fontFamily: "Roboto",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20,right: 15,left: 15,bottom: 5),
-              child: Container(
-                width: double.infinity,
-                height: 110,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 1),
-                        offset: Offset(3.0, 3.0),
-                        blurRadius: 5.0,
-                      ),
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 1),
-                        offset: Offset(-3.0, -3.0),
-                        blurRadius: 5.0,
-                      ),
-                    ]),
-                child: Container(
-                  padding: EdgeInsets.all(12),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Center(
-                              child: Text(
-                                "Ticket: " + "0345",
-                                style: TextStyle(
-                                    color: Colors.grey[800],
-                                    fontFamily: "Roboto",
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                            Center(
-                              child: Text(
-                                "--- " + "In Progress" + " ---",
-                                style: TextStyle(
-                                    color: Colors.grey[700],
-                                    fontFamily: "Roboto",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                            Center(
-                              child: Text(
-                                "Chưa Nhận Được Mail Đóng Học Phí",
-                                style: TextStyle(
-                                    color: Colors.grey[800],
-                                    fontFamily: "Roboto",
-                                    fontSize: 20,
                                     fontWeight: FontWeight.w700),
                               ),
                             ),
@@ -191,7 +113,6 @@ class RequestState extends State<Request> {
           ],
         ),
       ),
-
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

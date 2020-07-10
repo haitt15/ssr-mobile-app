@@ -42,13 +42,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 )
               ]),
           child: Container(
-            padding: EdgeInsets.only(left: 15, right: 15),
+            padding: EdgeInsets.only(left: 10, right: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SizedBox(
-                    height: ScreenUtil().setHeight(220),
-                    width: ScreenUtil().setWidth(220),
+                    height: ScreenUtil().setHeight(215),
+                    width: ScreenUtil().setWidth(215),
                     child: ClipOval(
                       child: Image.asset(
                         'assets/images/account.png',
@@ -56,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     )),
                 SizedBox(
-                  width: 25,
+                  width: 10,
                 ),
                 Expanded(
                   child: Column(
@@ -68,7 +68,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         style: TextStyle(
                             color: Colors.grey[800],
                             fontFamily: "Roboto",
-                            fontSize: ScreenUtil().setSp(70),
+                            fontSize: ScreenUtil().setSp(55),
                             fontWeight: FontWeight.w700),
                       ),
                       SizedBox(
@@ -79,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         style: TextStyle(
                             color: Colors.grey[500],
                             fontFamily: "Roboto",
-                            fontSize: 16,
+                            fontSize: ScreenUtil().setSp(45),
                             fontWeight: FontWeight.w400),
                       ),
                     ],

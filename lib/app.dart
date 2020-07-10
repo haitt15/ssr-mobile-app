@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           primaryColorDark: Colors.black,
           primarySwatch: Colors.blue,
         ),
-        home: Service_Detail());
+        home: MainScreen());
   }
 }
 // TITLE: Thay doi trang thai

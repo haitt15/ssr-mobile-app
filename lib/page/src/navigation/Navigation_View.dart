@@ -4,21 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Navigation_Icon.dart';
 class NavigationScreen extends StatefulWidget {
-//  NavigationScreen(this.jwt, this.payload);
-//
-//  factory NavigationScreen.fromBase64(String jwt) =>
-//      NavigationScreen(
-//          jwt,
-//          json.decode(
-//              ascii.decode(
-//                  base64.decode(base64.normalize(jwt.split(".")[1]))
-//              )
-//          )
-//      );
-
-//  final String jwt;
-//  final Map<String, dynamic> payload;
-
   @override
   _NavigationScreenState createState() => _NavigationScreenState();
 }

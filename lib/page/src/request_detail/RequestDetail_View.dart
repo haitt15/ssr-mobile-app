@@ -1,8 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:ssrapp/page/src/request_detail/RequestDetail_Model.dart';
 
 class Request_Detail extends StatefulWidget {
+  RequestDetailModel requestDetailModel;
+
+  Request_Detail({this.requestDetailModel});
+
   @override
   RequestDetailState createState() => RequestDetailState();
 }
@@ -15,8 +20,7 @@ class RequestDetailState extends State<Request_Detail> {
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(255, 156, 20, 1),
         elevation: 0.0,
-        title: Center(
-          child: Text(
+        title:  Text(
             "Request Detail",
             style: const TextStyle(
               color: Color.fromRGBO(255, 255, 255, 1),
@@ -24,7 +28,6 @@ class RequestDetailState extends State<Request_Detail> {
               fontFamily: "Montserrat",
               fontSize: 22.0,
             ),
-          ),
         ),
       ),
 
@@ -41,42 +44,8 @@ class RequestDetailState extends State<Request_Detail> {
                     padding: const EdgeInsets.only(left: 0),
                     child: Row(
                       children: <Widget>[
-                          Container(
-                            width:150,
-                            height: 38,
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(255, 166, 46, 1),
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(7.0),
-                                  bottomRight: Radius.circular(7.0),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromRGBO(0, 0, 0, 0.16),
-                                      offset: Offset(0, 10),
-                                      blurRadius: 6.0)
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 25, top: 8),
-                              child: Text(
-                                "In Progress",
-                                style: const TextStyle(
-                                  color: Color.fromRGBO(255, 255, 255, 1),
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: "Montserrat",
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                            ),
-                        ),
-                      ],
-                    )),
-                Padding(
-                    padding: const EdgeInsets.only(left: 0, top: 55),
-                    child: Row(
-                      children: <Widget>[
                         Container(
-                          width: 270,
+                          width: 150,
                           height: 38,
                           decoration: BoxDecoration(
                               color: Color.fromRGBO(255, 166, 46, 1),
@@ -93,7 +62,7 @@ class RequestDetailState extends State<Request_Detail> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 25, top: 8),
                             child: Text(
-                              "30/06/2020" + "  -  " + "07/07/2020",
+                              widget.requestDetailModel.status,
                               style: const TextStyle(
                                 color: Color.fromRGBO(255, 255, 255, 1),
                                 fontWeight: FontWeight.w500,
@@ -105,8 +74,42 @@ class RequestDetailState extends State<Request_Detail> {
                         ),
                       ],
                     )),
+                Padding(
+                    padding: const EdgeInsets.only(left: 0, top: 60),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          width: 240,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: Color.fromRGBO(255, 166, 46, 1),
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(7.0),
+                                bottomRight: Radius.circular(7.0),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color.fromRGBO(0, 0, 0, 0.16),
+                                    offset: Offset(0, 10),
+                                    blurRadius: 6.0)
+                              ]),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 25, top: 8),
+                            child: Text(
+                              "Due Datetime: ${widget.requestDetailModel.dueDatetime}",
+                              style: const TextStyle(
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                fontWeight: FontWeight.w500,
+                                fontFamily: "Montserrat",
+                                fontSize: 16.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
                 Positioned(
-                  top: 110,
+                  top: 140,
                   right: 0,
                   child: Container(
                     width: 260,
@@ -149,7 +152,7 @@ class RequestDetailState extends State<Request_Detail> {
                             width: 90,
                             height: 40,
                             child: Text(
-                              "0564",
+                              widget.requestDetailModel.ticketId,
                               style: const TextStyle(
                                 color: Color.fromRGBO(255, 255, 255, 1),
                                 fontWeight: FontWeight.w500,
@@ -166,7 +169,7 @@ class RequestDetailState extends State<Request_Detail> {
                             width: 100,
                             height: 40,
                             child: Text(
-                              "Finance Departments",
+                              widget.requestDetailModel.departmentNm,
                               style: const TextStyle(
                                 color: Color.fromRGBO(255, 255, 255, 1),
                                 fontWeight: FontWeight.w500,
@@ -184,7 +187,7 @@ class RequestDetailState extends State<Request_Detail> {
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: Container(
                     width: double.infinity,
-                    height: 210,
+                    height: 240,
                   ),
                 )
               ],
@@ -192,15 +195,17 @@ class RequestDetailState extends State<Request_Detail> {
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Text(
-                "Chưa Nhận Được Mail Đóng Học Phí",
-                style: const TextStyle(
-                  color: Color.fromRGBO(32, 32, 32, 1),
-                  fontWeight: FontWeight.w700,
-                  fontFamily: "Montserrat",
-                  fontSize: 21.0,
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Text(
+                  widget.requestDetailModel.serviceNm,
+                  style: const TextStyle(
+                    color: Color.fromRGBO(32, 32, 32, 1),
+                    fontWeight: FontWeight.w700,
+                    fontFamily: "Montserrat",
+                    fontSize: 21.0,
+                  ),
                 ),
               ),
             ),
@@ -211,7 +216,7 @@ class RequestDetailState extends State<Request_Detail> {
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: Container(
                   height: 1.0,
-                  width: 130.0,
+                  width: 150.0,
                   color: Color.fromRGBO(200, 201, 196, 1)),
             ),
             SizedBox(
@@ -222,12 +227,12 @@ class RequestDetailState extends State<Request_Detail> {
                 Padding(
                   padding: EdgeInsets.only(left: 20.0, right: 20),
                   child: Text(
-                    "Ngày 28/06/2020, Em có lên TP Bank đóng học phí kì 7 ngành KTPM. Hiện đến giờ vẫn chưa nhận được mail thông báo. Mong anh/chị kiểm tra trong thời gian sớm giúp em ạ.",
+                    widget.requestDetailModel.content,
                     style: const TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                         fontStyle: FontStyle.normal,
-                        fontSize: 20.0),
+                        fontSize:18.0),
                   ),
                 )
               ],
@@ -242,8 +247,7 @@ class RequestDetailState extends State<Request_Detail> {
             padding: EdgeInsets.only(bottom: 10.0),
             child: RaisedButton(
               onPressed: () {},
-              child:
-                  const Text('History', style: TextStyle(fontSize: 23)),
+              child: const Text('History', style: TextStyle(fontSize: 23)),
               color: Colors.blue,
               textColor: Colors.white,
               elevation: 5,
@@ -257,8 +261,7 @@ class RequestDetailState extends State<Request_Detail> {
             padding: EdgeInsets.only(bottom: 10.0),
             child: RaisedButton(
               onPressed: () {},
-              child:
-              const Text('Comment', style: TextStyle(fontSize: 23)),
+              child: const Text('Comment', style: TextStyle(fontSize: 23)),
               color: Colors.blue,
               textColor: Colors.white,
               elevation: 5,

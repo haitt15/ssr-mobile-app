@@ -35,7 +35,6 @@ class LoginViewModel extends Model {
         print("fcmToken: " + fcmToken);
         data = await UserRepository.callAPILoginGoogle(token.token, fcmToken);
       }
-
       return data;
     } catch (e) {
       print("signInWithGoogle Error: " + e.toString());

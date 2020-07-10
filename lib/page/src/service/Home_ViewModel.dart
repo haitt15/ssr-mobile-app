@@ -1,12 +1,15 @@
 import 'dart:convert';
 
 import 'package:scoped_model/scoped_model.dart';
+import 'package:ssrapp/main.dart';
+import 'package:ssrapp/page/src/service/Service_Model.dart';
 import 'package:ssrapp/repository/service_repository.dart';
 
 class HomeViewModel extends Model {
   ServiceRepository serviceRepository = ServiceRepository();
   List<dynamic> listItem;
 
+  List<ServiceModel> serviceList;
   HomeViewModel(){
     getAllServices();
   }
@@ -16,6 +19,8 @@ class HomeViewModel extends Model {
     if (reponse != null) {
       reponse = jsonDecode(reponse);
       listItem = reponse['data'];
+      serviceList = listItem.map((e) => ServiceModel.fromJson(e)).toList();
+//      storage.write(key: "serviceId", value: );
     }
     notifyListeners();
   }

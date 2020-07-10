@@ -4,6 +4,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:ssrapp/page/progress_bar.dart';
 import 'package:ssrapp/page/src/service/Home_ViewModel.dart';
 import 'package:ssrapp/page/src/service/Service_Model.dart';
+import 'package:ssrapp/page/src/service_detail/ServiceDetail_View.dart';
 
 class GridHome extends StatefulWidget {
   @override
@@ -42,9 +43,9 @@ class _GridHomeState extends State<GridHome> {
       child: Stack(
         children: <Widget>[
           ScopedModelDescendant<HomeViewModel>(builder:
-              (BuildContext context, Widget child, HomeViewModel model) {
+              (BuildContext buildContext, Widget child, HomeViewModel model) {
             return Flexible(
-              child: model.listItem == null
+              child: model.serviceList == null
                   ? ProgressBarScreen()
                   : GridView.count(
                   childAspectRatio: 1.0,
@@ -52,52 +53,57 @@ class _GridHomeState extends State<GridHome> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 18,
                   mainAxisSpacing: 18,
-                  children: model.listItem.map((data) {
-                    return Container(
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(255, 156, 24, 0.9),
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
+                  children: model.serviceList.map((service) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Service_Detail(service: service,)));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color.fromRGBO(255, 156, 24, 0.9),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
 //                      Image.asset(
 //                        data[''],
 //                        width: 42,
 //                      ),
-                          SizedBox(
-                            height: 12,
-                          ),
-                          Text(
-                            data['serviceNm'],
-                            style: (TextStyle(
-                                fontFamily: 'OpenSans',
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600)),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Text(
-                            data['descriptionService'],
-                            style: (TextStyle(
-                                fontFamily: 'OpenSans',
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.w600)),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            data['departmentNm'],
-                            style: (TextStyle(
-                                fontFamily: 'OpenSans',
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600)),
-                          ),
-                        ],
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              service.serviceNm,
+                              style: (TextStyle(
+                                  fontFamily: 'OpenSans',
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600)),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Text(
+                              service.descriptionService,
+                              style: (TextStyle(
+                                  fontFamily: 'OpenSans',
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600)),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              service.departmentNm,
+                              style: (TextStyle(
+                                  fontFamily: 'OpenSans',
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600)),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }).toList()),

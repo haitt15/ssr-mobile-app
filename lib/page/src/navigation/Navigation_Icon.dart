@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
 import 'package:ssrapp/page/src/profile/Profile_View.dart';
+import 'package:ssrapp/page/src/request/Request_View.dart';
 
 
 import '../service/Home_View.dart';
@@ -56,7 +57,7 @@ class _NavigationIconScreenState extends State<NavigationIconScreen> {
     }
 
     listWidget.add(GridHome());
-    listWidget.add(GridHome());
+    listWidget.add(Request());
     listWidget.add(GridHome());
     listWidget.add(ProfileScreen());
 
