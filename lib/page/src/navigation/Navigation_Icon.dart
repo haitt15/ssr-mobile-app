@@ -72,14 +72,12 @@ class _NavigationIconScreenState extends State<NavigationIconScreen> {
     return Scaffold(
       resizeToAvoidBottomPadding: true,
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
-        child: AppBar(
-          title: Text('Service Detail',
+      appBar:  AppBar(
+          title: Text('Student Service Request',
               style: TextStyle(fontSize: ScreenUtil().setSp(55))),
           backgroundColor: Color.fromRGBO(255, 156, 24, 1),
         ),
-      ),
+
       body: listWidget.elementAt(curIndex),
 
 //      body: SingleChildScrollView(

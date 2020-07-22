@@ -13,7 +13,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Widget _inputForm() => Container(
         width: double.infinity,
-        height: ScreenUtil.getInstance().setHeight(1100),
+        height: ScreenUtil.getInstance().setHeight(880),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
@@ -38,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "Sign In",
+                    "Sign up",
                     style: TextStyle(
                       fontFamily: 'OpenSans',
                       fontSize: ScreenUtil.getInstance().setSp(65),
@@ -168,7 +168,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 5.0),
                     prefixIcon: Icon(
-                      Icons.lock,
+                      Icons.adjust,
                       color: Colors.grey,
                       size: 20,
                     ),
@@ -203,7 +203,7 @@ class _SignupScreenState extends State<SignupScreen> {
           child: InkWell(
             onTap: () {},
             child: Center(
-              child: Text("Sign Up",
+              child: Text("Sign up",
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: "Poppins-Bold",
@@ -233,10 +233,10 @@ class _SignupScreenState extends State<SignupScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 15.0),
+                padding: EdgeInsets.only(top: 30.0),
                 child: Image.asset(
                   "assets/images/logo.png",
-                  height: ScreenUtil.getInstance().setHeight(250),
+                  height: ScreenUtil.getInstance().setHeight(280),
                   width: ScreenUtil.getInstance().setWidth(1080),
                 ),
               ),
@@ -244,7 +244,7 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 110.0),
+              padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 180.0),
               child: Column(
                 children: <Widget>[
                   _inputForm(),

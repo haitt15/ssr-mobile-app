@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 
 class Request extends StatefulWidget {
   @override
@@ -12,101 +13,94 @@ class RequestState extends State<Request> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(255, 156, 20, 1),
-        elevation: 0.0,
-        title: Center(
-          child: Text(
-            "List of Requests",
-            style: const TextStyle(
-              color: Color.fromRGBO(255, 255, 255, 1),
-              fontWeight: FontWeight.w800,
-              fontFamily: "Montserrat",
-              fontSize: 22.0,
-            ),
-          ),
-        ),
-      ),
-
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 20,right: 15,left: 15,bottom: 5),
-              child: Container(
-                width: double.infinity,
-                height: 120,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 1),
-                        offset: Offset(3.0, 3.0),
-                        blurRadius: 5.0,
-                      ),
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 1),
-                        offset: Offset(-3.0, -3.0),
-                        blurRadius: 5.0,
-                      ),
-                    ]),
-                child: Container(
-                  padding: EdgeInsets.all(12),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Center(
-                              child: Text(
-                                "Ticket: " + "0345",
-                                style: TextStyle(
-                                    color: Colors.grey[800],
-                                    fontFamily: "Roboto",
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                            Center(
-                              child: Text(
-                                "--- " + "In Progress" + " ---",
-                                style: TextStyle(
-                                    color: Colors.grey[700],
-                                    fontFamily: "Roboto",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                            Center(
-                              child: Text(
-                                "Chưa Nhận Được Mail Đóng Học Phí",
-                                style: TextStyle(
-                                    color: Colors.grey[800],
-                                    fontFamily: "Roboto",
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ),
-
-                            Center(
-                              child: Text(
-                                "Tap for more info",
-                                style: TextStyle(
-                                    color: Colors.grey[500],
-                                    fontFamily: "Roboto",
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+              padding: const EdgeInsets.fromLTRB(20, 15, 0, 10),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.collections_bookmark,
+                    size: 21,
                   ),
+                  Text(
+                    " List of Requests",
+                    style: const TextStyle(
+                      color: Color.fromRGBO(0, 0, 0, 1),
+                      fontWeight: FontWeight.w800,
+                      fontFamily: "Montserrat",
+                      fontSize: 21.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            MaterialButton(
+              minWidth: double.infinity,
+              onPressed: () {},
+              child: Card(
+                elevation: 2,
+                shadowColor: Colors.orange,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Stack(children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Stack(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.only(left: 0, top: 5),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      ticketIcon(),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      ticketID("ugkhjdkd"),
+                                      Spacer(),
+                                      dueDatetime("2020-07-24T18:07:51.82"),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      dueDatetimeIcon(),
+                                      SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  _createHorizontalLine(2000),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    " " + "Waiting" + " ",style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                  ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  _createHorizontalLine(2000),
+                                  Row(
+                                    children: <Widget>[
+                                      requestInfo(
+                                          "Đăng ký mượn sách", "Phòng thư viện")
+                                    ],
+                                  )
+                                ],
+                              ))
+                        ],
+                      ),
+                    )
+                  ]),
                 ),
               ),
             ),
@@ -114,6 +108,107 @@ class RequestState extends State<Request> {
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget _createHorizontalLine(double size) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Container(
+            height: 1.0, width: size, color: Colors.grey),
+      );
+
+  Widget ticketIcon() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15.0),
+      child: Align(
+          alignment: Alignment.centerLeft,
+          child: Icon(
+            Icons.label,
+            size: 30,
+            color: Colors.orange,
+          )),
+    );
+  }
+
+  Widget ticketID(String id) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: RichText(
+        text: TextSpan(
+          text: "Ticket ID:",
+          style: TextStyle(
+              color: Colors.grey, fontSize: 13, fontWeight: FontWeight.bold),
+          children: <TextSpan>[
+            TextSpan(
+                text: '\n' + id, // ticket id
+                style: TextStyle(color: Colors.black, fontSize: 18)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget dueDatetime(String time) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: RichText(
+        text: TextSpan(
+          text: "Due Datetime: ",
+          style: TextStyle(
+              color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+          children: <TextSpan>[
+            TextSpan(
+                text: '\n' + time,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 13)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget dueDatetimeIcon() {
+    return Align(
+        alignment: Alignment.topRight,
+        child: Icon(
+          Icons.schedule,
+          color: Colors.red,
+          size: 20,
+        ));
+  }
+
+  Widget requestInfo(String service, String department) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20.0),
+        child: Row(
+          children: <Widget>[
+            RichText(
+              textAlign: TextAlign.left,
+              text: TextSpan(
+                text: '\n' + "Service: " + service,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: '\n' + "Department: " + department,
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

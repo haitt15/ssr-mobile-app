@@ -25,9 +25,9 @@ class _GridHomeState extends State<GridHome> {
   void getMessage() {
     _firebaseMessaging.configure(
         onMessage: (Map<String, dynamic> message) async {
-          print('received message');
-          setState(() => _message = message["notification"]["body"]);
-        }, onResume: (Map<String, dynamic> message) async {
+      print('received message');
+      setState(() => _message = message["notification"]["body"]);
+    }, onResume: (Map<String, dynamic> message) async {
       print('on resume $message');
       setState(() => _message = message["notification"]["body"]);
     }, onLaunch: (Map<String, dynamic> message) async {
@@ -48,65 +48,93 @@ class _GridHomeState extends State<GridHome> {
               child: model.serviceList == null
                   ? ProgressBarScreen()
                   : GridView.count(
-                  childAspectRatio: 1.0,
-                  padding: EdgeInsets.only(left: 16, right: 16, top: 14),
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 18,
-                  mainAxisSpacing: 18,
-                  children: model.serviceList.map((service) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Service_Detail(service: service,)));
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color.fromRGBO(255, 156, 24, 0.9),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-//                      Image.asset(
-//                        data[''],
-//                        width: 42,
-//                      ),
-                            SizedBox(
-                              height: 12,
+                      childAspectRatio: 1.0,
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 14),
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 9,
+                      mainAxisSpacing: 9,
+                      children: model.serviceList.map((service) {
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Service_Detail(
+                                          service: service,
+                                        )));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.orangeAccent, width: 1.0),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5.0),
+                              ),
+                              boxShadow: <BoxShadow>[
+                                new BoxShadow(
+                                  color: Colors.orangeAccent,
+                                  blurRadius: 3.0,
+                                  offset: new Offset(0.0, 1.0),
+                                ),
+                              ],
                             ),
-                            Text(
-                              service.serviceNm,
-                              style: (TextStyle(
-                                  fontFamily: 'OpenSans',
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Image.asset(
+                                  "assets/images/register1.png",
+                                  width: 45,
+                                ),
+                                SizedBox(
+                                  height: 12,
+                                ),
+                                Text(
+                                  service.departmentNm,
+                                  style: (TextStyle(
+                                      fontFamily: 'OpenSans',
+                                      fontSize: 14,
+                                      color: Colors.orange,
+                                      fontWeight: FontWeight.w600)),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(10,0, 10, 0),
+                                  child: Text(
+                                    service.serviceNm,
+                                    style: (TextStyle(
+                                        fontFamily: 'OpenSans',
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w800)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(10,0, 10, 0),
+                                  child: Text(
+                                    service.descriptionService,
+                                    style: (TextStyle(
+                                        fontFamily: 'OpenSans',
+                                        fontSize: 14,
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.w400)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              service.descriptionService,
-                              style: (TextStyle(
-                                  fontFamily: 'OpenSans',
-                                  color: Colors.white,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w600)),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              service.departmentNm,
-                              style: (TextStyle(
-                                  fontFamily: 'OpenSans',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600)),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList()),
+                          ),
+                        );
+                      }).toList()),
             );
           }),
         ],

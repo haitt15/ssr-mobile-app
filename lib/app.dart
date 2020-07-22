@@ -65,7 +65,7 @@ class MainScreen extends StatelessWidget {
                 .decode(ascii.decode(base64.decode(base64.normalize(jwt[1]))));
             if (DateTime.fromMillisecondsSinceEpoch(payload["exp"] * 1000)
                 .isAfter(DateTime.now())) {
-              return NavigationScreen();
+              return new NavigationScreen();
             } else {
               return LoginScreen();
             }
@@ -87,7 +87,7 @@ class FirebaseState extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting)
           return ProgressBarScreen();
         if (!snapshot.hasData || snapshot.data == null) return LoginScreen();
-        return NavigationScreen();
+        return new NavigationScreen();
       },
     );
   }

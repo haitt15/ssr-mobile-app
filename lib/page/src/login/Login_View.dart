@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _inputForm() => Container(
         width: double.infinity,
-        height: ScreenUtil.getInstance().setHeight(700),
+        height: ScreenUtil.getInstance().setHeight(560),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8.0),
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "Sign In",
+                    "Sign in",
                     style: TextStyle(
                       fontFamily: 'OpenSans',
                       fontSize: ScreenUtil.getInstance().setSp(65),
@@ -165,22 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: ScreenUtil.getInstance().setHeight(50),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      color: Color.fromRGBO(255, 156, 24, 1),
-                      fontFamily: "Poppins",
-                      fontSize: ScreenUtil.getInstance().setSp(35),
-                    ),
-                  ),
-                ],
-              ),
+              _cbRemember(),
             ],
           ),
         ),
@@ -321,10 +306,10 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 15.0),
+                padding: EdgeInsets.only(top: 30.0),
                 child: Image.asset(
                   "assets/images/logo.png",
-                  height: ScreenUtil.getInstance().setHeight(250),
+                  height: ScreenUtil.getInstance().setHeight(280),
                   width: ScreenUtil.getInstance().setWidth(1080),
                 ),
               ),
@@ -332,14 +317,29 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 110.0),
+              padding: EdgeInsets.only(left: 30.0, right: 30.0, top: 180.0),
               child: Column(
                 children: <Widget>[
                   _inputForm(),
                   SizedBox(
                     height: ScreenUtil.getInstance().setHeight(35),
                   ),
-                  _cbRemember(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                          color: Color.fromRGBO(255, 156, 24, 1),
+                          fontFamily: "Poppins",
+                          fontSize: ScreenUtil.getInstance().setSp(35),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: ScreenUtil.getInstance().setHeight(35),
+                  ),
                   _btnSignIn(),
                   SizedBox(
                     height: ScreenUtil.getInstance().setHeight(60),
@@ -347,16 +347,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   Column(
                     children: <Widget>[
                       Text(
-                        '- OR -',
+                        '--- OR ---',
                         style: TextStyle(
                           fontSize: ScreenUtil.getInstance().setSp(40),
                           color: Colors.black,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      SizedBox(height: 10.0),
+                      SizedBox(height: 20.0),
                       Text(
-                        'Sign in with',
+                        'Login with',
                         style: TextStyle(
                           fontSize: ScreenUtil.getInstance().setSp(40),
                           fontWeight: FontWeight.bold,
@@ -417,8 +417,12 @@ class _LoginScreenState extends State<LoginScreen> {
       storage.write(key: "UserInfo", value: userInfo);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('UserInfo', userInfo);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => NavigationScreen()));
+      await Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+              new NavigationScreen()),
+              (router) => false);
     } else {
       _showMsg(context, "Please sign in with FPT Education mail");
     }
