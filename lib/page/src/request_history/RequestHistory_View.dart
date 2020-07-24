@@ -11,7 +11,6 @@ class RequestHistoryState extends State<Request_History> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 255, 255, 1),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(255, 156, 20, 1),
         elevation: 0.0,
@@ -30,40 +29,44 @@ class RequestHistoryState extends State<Request_History> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 15, 10, 10),
+              padding: const EdgeInsets.fromLTRB(15, 10, 10, 5),
               child: Row(
                 children: <Widget>[
                   Icon(
                     Icons.label,
                   ),
-                  Text(
-                    " Ticket ID: " + "wdffewfw",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                  Expanded(
+                    child: Text(
+                      " Ticket ID: " + "wdffewfw",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                    ),
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 15, 10, 10),
+              padding: const EdgeInsets.fromLTRB(15, 10, 10, 5),
               child: Row(
                 children: <Widget>[
                   Icon(
                     Icons.dvr,
                   ),
-                  Text(
-                    " Service: " + "Đăng ký đi xe bus",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                  Expanded(
+                    child: Text(
+                      " Service: " + "Đăng ký đi xe bus",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                    ),
                   ),
                 ],
               ),
             ),
-            _createHorizontalLine(400),
+            _createHorizontalLine(5000),
             Padding(
               padding: const EdgeInsets.only(
                   top: 20, right: 15, left: 15, bottom: 5),
               child: Container(
                 width: double.infinity,
-                height: 32,
+                height: 28,
                 decoration: BoxDecoration(
                     color: Colors.orangeAccent,
                     borderRadius: BorderRadius.circular(3.0),
@@ -80,22 +83,63 @@ class RequestHistoryState extends State<Request_History> {
                       ),
                     ]),
                 child: Container(
-                  child: Center(child: Text("History",style: TextStyle(
-                    fontSize: 22,color: Colors.black87
+                  child: Center(child: Text("History Section",style: TextStyle(
+                    fontSize: 23,color: Colors.black87
                   ),)),
                 ),
               ),
             ),
-            SingleChildScrollView(
-              child: Material(
-                  child: Column(
+            Material(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadowColor: Colors.white,
+                    elevation: 10,
+                    child: Column(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
                           child: Row(
                             children: [
                               Icon(
-                                Icons.calendar_today,size: 20,
+                                Icons.album,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Title:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Cập nhật trạng thái request",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.today,size: 20,
                               ),
                               Expanded(
                                 child: Text(
@@ -108,79 +152,641 @@ class RequestHistoryState extends State<Request_History> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
                           child: Row(
                             children: [
                               Expanded(
                                 child: Text(
-                                    "2020-07-24T18:07:51.82"
+                                  "2020-07-24T18:07:51.82",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 5, 10, 0),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.album,size: 20,
-                              ),
-                              Text(
-                                " Title:",style: TextStyle(
-                                fontSize: 18,fontWeight: FontWeight.bold,
-                              ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                    "Cap nhat trang thai request"
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 5, 10, 0),
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
                           child: Row(
                             children: [
                               Icon(
                                 Icons.comment,size: 20,
                               ),
-                              Text(
-                                " Content:",style: TextStyle(
-                                fontSize: 18,fontWeight: FontWeight.bold,
-                              ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
-                          child: Row(
-                            children: [
                               Expanded(
                                 child: Text(
-                                    "Nhan vien A da cap nhat trang thai request tu Waiting sang In Progress"
+                                  " Content:",style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 19,
+                                ),
                                 ),
                               ),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: _createHorizontalLine(250),
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 10),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Nhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In Progress",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
+                    ),
                   ),
+                ),
               ),
             ),
+            Material(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadowColor: Colors.white,
+                    elevation: 10,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.album,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Title:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Cập nhật trạng thái request",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.today,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Date:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "2020-07-24T18:07:51.82",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.comment,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Content:",style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 19,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 10),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Nhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In Progress",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Material(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadowColor: Colors.white,
+                    elevation: 10,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.album,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Title:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Cập nhật trạng thái request",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.today,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Date:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "2020-07-24T18:07:51.82",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.comment,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Content:",style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 19,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 10),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Nhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In Progress",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Material(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadowColor: Colors.white,
+                    elevation: 10,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.album,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Title:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Cập nhật trạng thái request",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.today,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Date:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "2020-07-24T18:07:51.82",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.comment,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Content:",style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 19,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 10),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Nhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In Progress",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Material(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadowColor: Colors.white,
+                    elevation: 10,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.album,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Title:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Cập nhật trạng thái request",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.today,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Date:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "2020-07-24T18:07:51.82",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.comment,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Content:",style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 19,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 10),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Nhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In Progress",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Material(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    shadowColor: Colors.white,
+                    elevation: 10,
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.album,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Title:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Cập nhật trạng thái request",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 5, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.today,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Date:",style: TextStyle(
+                                  fontSize: 19,fontWeight: FontWeight.bold,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "2020-07-24T18:07:51.82",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.comment,size: 20,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  " Content:",style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 19,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(35, 5, 35, 10),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Nhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In ProgressNhân viên A đã cập nhật trạng thái request từ Waiting sang In Progress",style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 17,
+                                ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+
           ],
         ),
       ),
@@ -190,8 +796,8 @@ class RequestHistoryState extends State<Request_History> {
   }
 
   Widget _createHorizontalLine(double size) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        child: Container(
-            height: 1.0, width: size, color: Color.fromRGBO(200, 201, 196, 1)),
-      );
+    padding: EdgeInsets.symmetric(horizontal: 0),
+    child: Container(
+        height: 1.0, width: size, color: Colors.grey),
+  );
 }

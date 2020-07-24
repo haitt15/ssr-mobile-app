@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:speed_dial/speed_dial.dart';
+import 'package:ssrapp/page/src/comment/Comment_View.dart';
 import 'package:ssrapp/page/src/request_detail/RequestDetail_Model.dart';
 import 'package:ssrapp/page/src/request_history/RequestHistory_View.dart';
 
@@ -247,7 +248,12 @@ class RequestDetailState extends State<Request_Detail> {
                 ),
               ],
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Comment_Screen()));
+            },
             heroTag: null,
           ),
         ])

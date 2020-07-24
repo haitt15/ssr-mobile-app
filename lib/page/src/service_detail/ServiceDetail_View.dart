@@ -103,9 +103,9 @@ class RequestDetailState extends State<Service_Detail> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(25, 20, 25, 20),
+                padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
                 child: SizedBox.fromSize(
-                  size: Size(250, 45), // button width and height
+                  size: Size(300, 45), // button width and height
                   child: Material(
                     elevation: 3,
                     borderRadius: BorderRadius.circular(10),

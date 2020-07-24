@@ -37,12 +37,14 @@ class RequestState extends State<Request> {
                 ],
               ),
             ),
+
+
             MaterialButton(
               minWidth: double.infinity,
               onPressed: () {},
               child: Card(
-                elevation: 2,
-                shadowColor: Colors.orange,
+                elevation: 5,
+                shadowColor: Colors.black,
                 child: Padding(
                   padding: EdgeInsets.all(5),
                   child: Stack(children: <Widget>[
@@ -73,22 +75,24 @@ class RequestState extends State<Request> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 15,
+                                    height: 10,
                                   ),
-                                  _createHorizontalLine(2000),
-                                  SizedBox(
-                                    height: 5,
+                                  Card(
+                                    color: Colors.yellow,
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(color: Colors.black, width: 1),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "Waiting",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                  Text(
-                                    " " + "Waiting" + " ",style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 17,
-                                  ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  _createHorizontalLine(2000),
                                   Row(
                                     children: <Widget>[
                                       requestInfo(
@@ -96,7 +100,7 @@ class RequestState extends State<Request> {
                                     ],
                                   )
                                 ],
-                              ))
+                              )),
                         ],
                       ),
                     )
@@ -104,6 +108,443 @@ class RequestState extends State<Request> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+            MaterialButton(
+              minWidth: double.infinity,
+              onPressed: () {},
+              child: Card(
+                elevation: 5,
+                shadowColor: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Stack(children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Stack(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.only(left: 0, top: 5),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      ticketIcon(),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      ticketID("ugkhjdkd"),
+                                      Spacer(),
+                                      dueDatetime("2020-07-24T18:07:51.82"),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      dueDatetimeIcon(),
+                                      SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Card(
+                                    color: Colors.yellow,
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(color: Colors.black, width: 1),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "Waiting",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      requestInfo(
+                                          "Đăng ký mượn sách", "Phòng thư viện")
+                                    ],
+                                  )
+                                ],
+                              )),
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            MaterialButton(
+              minWidth: double.infinity,
+              onPressed: () {},
+              child: Card(
+                elevation: 5,
+                shadowColor: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Stack(children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Stack(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.only(left: 0, top: 5),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      ticketIcon(),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      ticketID("ugkhjdkd"),
+                                      Spacer(),
+                                      dueDatetime("2020-07-24T18:07:51.82"),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      dueDatetimeIcon(),
+                                      SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Card(
+                                    color: Colors.yellow,
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(color: Colors.black, width: 1),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "Waiting",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      requestInfo(
+                                          "Đăng ký mượn sách", "Phòng thư viện")
+                                    ],
+                                  )
+                                ],
+                              )),
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            MaterialButton(
+              minWidth: double.infinity,
+              onPressed: () {},
+              child: Card(
+                elevation: 5,
+                shadowColor: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Stack(children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Stack(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.only(left: 0, top: 5),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      ticketIcon(),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      ticketID("ugkhjdkd"),
+                                      Spacer(),
+                                      dueDatetime("2020-07-24T18:07:51.82"),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      dueDatetimeIcon(),
+                                      SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Card(
+                                    color: Colors.yellow,
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(color: Colors.black, width: 1),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "Waiting",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      requestInfo(
+                                          "Đăng ký mượn sách", "Phòng thư viện")
+                                    ],
+                                  )
+                                ],
+                              )),
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            MaterialButton(
+              minWidth: double.infinity,
+              onPressed: () {},
+              child: Card(
+                elevation: 5,
+                shadowColor: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Stack(children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Stack(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.only(left: 0, top: 5),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      ticketIcon(),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      ticketID("ugkhjdkd"),
+                                      Spacer(),
+                                      dueDatetime("2020-07-24T18:07:51.82"),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      dueDatetimeIcon(),
+                                      SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Card(
+                                    color: Colors.yellow,
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(color: Colors.black, width: 1),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "Waiting",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      requestInfo(
+                                          "Đăng ký mượn sách", "Phòng thư viện")
+                                    ],
+                                  )
+                                ],
+                              )),
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            MaterialButton(
+              minWidth: double.infinity,
+              onPressed: () {},
+              child: Card(
+                elevation: 5,
+                shadowColor: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Stack(children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Stack(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.only(left: 0, top: 5),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      ticketIcon(),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      ticketID("ugkhjdkd"),
+                                      Spacer(),
+                                      dueDatetime("2020-07-24T18:07:51.82"),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      dueDatetimeIcon(),
+                                      SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Card(
+                                    color: Colors.yellow,
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(color: Colors.black, width: 1),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "Waiting",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      requestInfo(
+                                          "Đăng ký mượn sách", "Phòng thư viện")
+                                    ],
+                                  )
+                                ],
+                              )),
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            MaterialButton(
+              minWidth: double.infinity,
+              onPressed: () {},
+              child: Card(
+                elevation: 5,
+                shadowColor: Colors.black,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: Stack(children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Stack(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.only(left: 0, top: 5),
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      ticketIcon(),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      ticketID("ugkhjdkd"),
+                                      Spacer(),
+                                      dueDatetime("2020-07-24T18:07:51.82"),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      dueDatetimeIcon(),
+                                      SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Card(
+                                    color: Colors.yellow,
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(color: Colors.black, width: 1),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        "Waiting",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      requestInfo(
+                                          "Đăng ký mượn sách", "Phòng thư viện")
+                                    ],
+                                  )
+                                ],
+                              )),
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+
+
           ],
         ),
       ),
@@ -113,8 +554,7 @@ class RequestState extends State<Request> {
 
   Widget _createHorizontalLine(double size) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Container(
-            height: 1.0, width: size, color: Colors.grey),
+        child: Container(height: 1.0, width: size, color: Colors.grey),
       );
 
   Widget ticketIcon() {
@@ -125,7 +565,7 @@ class RequestState extends State<Request> {
           child: Icon(
             Icons.label,
             size: 30,
-            color: Colors.orange,
+            color: Colors.black54,
           )),
     );
   }
@@ -137,7 +577,9 @@ class RequestState extends State<Request> {
         text: TextSpan(
           text: "Ticket ID:",
           style: TextStyle(
-              color: Colors.grey, fontSize: 13, fontWeight: FontWeight.bold),
+              color: Colors.grey,
+              fontSize: 13,
+              fontWeight: FontWeight.bold),
           children: <TextSpan>[
             TextSpan(
                 text: '\n' + id, // ticket id
@@ -155,7 +597,7 @@ class RequestState extends State<Request> {
         text: TextSpan(
           text: "Due Datetime: ",
           style: TextStyle(
-              color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold),
+              color: Colors.red, fontSize: 12, fontWeight: FontWeight.bold),
           children: <TextSpan>[
             TextSpan(
                 text: '\n' + time,
