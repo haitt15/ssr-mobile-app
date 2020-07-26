@@ -214,8 +214,10 @@ class RequestDetailState extends State<Request_Detail> {
               ],
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Request_History()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Request_History(requestDetailModel: widget.requestDetailModel,)));
             },
             heroTag: null,
           ),
@@ -236,8 +238,10 @@ class RequestDetailState extends State<Request_Detail> {
               ],
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Comment_Screen()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Comment_Screen(requestDetailModel: widget.requestDetailModel,)));
             },
             heroTag: null,
           ),

@@ -1,24 +1,36 @@
 import 'dart:convert';
 
 import 'package:scoped_model/scoped_model.dart';
-import 'package:ssrapp/page/src/request/Request_Model.dart';
-import 'package:ssrapp/repository/service_repository.dart';
+import 'package:ssrapp/repository/request_repository.dart';
 
-class RequestViewModel extends Model{
-  ServiceRepository serviceRepository = ServiceRepository();
+import '../../../main.dart';
+import '../request_detail/RequestDetail_Model.dart';
+
+class RequestViewModel extends Model {
+  RequestRepository requestRepository = RequestRepository();
   List<dynamic> listItem;
+  List<RequestDetailModel> requestList;
 
-  List<RequestModel> requestList;
-  RequestViewModel(){
+  RequestViewModel() {
     getAllRequest();
   }
 
   void getAllRequest() async {
-    var reponse = await serviceRepository.getAllService();
+    String username = "";
+    dynamic user = await storage.read(key: "UserInfo");
+    if (user == null)
+      return null;
+    else {
+      user = jsonDecode(user);
+      username = user['username'];
+    }
+    var reponse = await requestRepository.getAllRequest(username);
     if (reponse != null) {
       reponse = jsonDecode(reponse);
       listItem = reponse['data'];
-      requestList = listItem.map((e) => RequestModel.fromJson(e)).toList();
+      requestList =
+          listItem.map((e) => RequestDetailModel.fromJson(e)).toList();
+//      storage.write(key: "serviceId", value: );
     }
     notifyListeners();
   }
