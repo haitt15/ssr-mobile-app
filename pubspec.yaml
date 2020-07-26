@@ -41,7 +41,7 @@ dependencies:
   shared_preferences: ^0.5.7+3
   speed_dial: ^0.0.1
   flutter_tabler_icons: ^1.0.2
-
+  webview_flutter: ^0.3.22+1
 
 dev_dependencies:
   flutter_test:

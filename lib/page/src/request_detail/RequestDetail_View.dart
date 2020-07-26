@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:speed_dial/speed_dial.dart';
+import 'package:ssrapp/page/src/WebViewContainer/WebViewContainer.dart';
 import 'package:ssrapp/page/src/comment/Comment_View.dart';
 import 'package:ssrapp/page/src/request_detail/RequestDetail_Model.dart';
 import 'package:ssrapp/page/src/request_history/RequestHistory_View.dart';
@@ -17,6 +18,10 @@ class Request_Detail extends StatefulWidget {
 }
 
 class RequestDetailState extends State<Request_Detail> {
+  final _links = [
+    'https://l.facebook.com/l.php?u=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSeJaza8JntPFUAsEa3pzXlWccnEot8y-opnri34jNEZGyxVfw%2Fviewform%3Ffbclid%3DIwAR3XJif3Y_0Q1kmrb14rEEKQU-fJWLvtUJU6_OLzcPBjESSlmH_5c5iXEBk&h=AT065-IiH6lFqKyg20qzittJNt0nx6SzLBCe0zqKftkb0DJQXT0RqQ1i7FzdKmnM-sHg8PS1ZQ9hJ-XxLfpzEkccV4MppEff9xpn17QiX9S15kJeGxu9tUzr1c_kUatWdYIUIA'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,24 +194,8 @@ class RequestDetailState extends State<Request_Detail> {
         ),
         floatingActionButton:
             Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          FloatingActionButton(
-            backgroundColor: Colors.purpleAccent.withOpacity(0.5),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.assignment,
-                  size: 23,
-                ),
-                Text(
-                  "Google\nForm",
-                  style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            onPressed: () {},
-            heroTag: null,
+          Column(
+            children: _links.map((link) => _urlButton(context, link)).toList(),
           ),
           SizedBox(
             height: 10,
@@ -225,10 +214,8 @@ class RequestDetailState extends State<Request_Detail> {
               ],
             ),
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Request_History()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Request_History()));
             },
             heroTag: null,
           ),
@@ -249,10 +236,8 @@ class RequestDetailState extends State<Request_Detail> {
               ],
             ),
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Comment_Screen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Comment_Screen()));
             },
             heroTag: null,
           ),
@@ -320,4 +305,34 @@ class RequestDetailState extends State<Request_Detail> {
         child: Container(
             height: 1.0, width: 130.0, color: Color.fromRGBO(200, 201, 196, 1)),
       );
+
+  Widget _urlButton(BuildContext context, String url) {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      child: FloatingActionButton(
+        backgroundColor: Colors.purpleAccent.withOpacity(0.5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.assignment,
+              size: 23,
+            ),
+            Text(
+              "Google\nForm",
+              style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+        onPressed: () => _handleURLButtonPress(context, url),
+        heroTag: null,
+      ),
+    );
+  }
+
+  void _handleURLButtonPress(BuildContext context, String url) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => WebViewContainer(url)));
+  }
 }
