@@ -228,7 +228,7 @@ class RequestDetailState extends State<Request_Detail> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Request_History()));
+                      builder: (context) => Request_History(requestDetailModel: widget.requestDetailModel,)));
             },
             heroTag: null,
           ),
@@ -252,7 +252,7 @@ class RequestDetailState extends State<Request_Detail> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Comment_Screen()));
+                      builder: (context) => Comment_Screen(requestDetailModel: widget.requestDetailModel,)));
             },
             heroTag: null,
           ),
