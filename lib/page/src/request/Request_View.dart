@@ -105,7 +105,17 @@ class RequestState extends State<Request> {
                                             height: 10,
                                           ),
                                           Card(
-                                            color: Colors.yellow,
+                                            color: (dto.status == "Waiting")
+                                                ? Colors.yellow
+                                                : (dto.status == "Rejected")
+                                                    ? Colors.red
+                                                    : (dto.status == "Finished")
+                                                        ? Colors.green
+                                                        : (dto.status ==
+                                                                "In-Progress")
+                                                            ? Colors.blue
+                                                            : Colors
+                                                                .deepOrangeAccent,
                                             shape: RoundedRectangleBorder(
                                               side: BorderSide(
                                                   color: Colors.black,
