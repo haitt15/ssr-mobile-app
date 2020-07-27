@@ -2,11 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:speed_dial/speed_dial.dart';
 import 'package:ssrapp/page/src/WebViewContainer/WebViewContainer.dart';
 import 'package:ssrapp/page/src/comment/Comment_View.dart';
 import 'package:ssrapp/page/src/request_detail/RequestDetail_Model.dart';
 import 'package:ssrapp/page/src/request_history/RequestHistory_View.dart';
+import 'package:ssrapp/page/src/service/Service_ViewModel.dart';
+
+import '../service/Home_ViewModel.dart';
 
 class Request_Detail extends StatefulWidget {
   RequestDetailModel requestDetailModel;
@@ -18,9 +22,7 @@ class Request_Detail extends StatefulWidget {
 }
 
 class RequestDetailState extends State<Request_Detail> {
-  final _links = [
-    'https://l.facebook.com/l.php?u=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSeJaza8JntPFUAsEa3pzXlWccnEot8y-opnri34jNEZGyxVfw%2Fviewform%3Ffbclid%3DIwAR3XJif3Y_0Q1kmrb14rEEKQU-fJWLvtUJU6_OLzcPBjESSlmH_5c5iXEBk&h=AT065-IiH6lFqKyg20qzittJNt0nx6SzLBCe0zqKftkb0DJQXT0RqQ1i7FzdKmnM-sHg8PS1ZQ9hJ-XxLfpzEkccV4MppEff9xpn17QiX9S15kJeGxu9tUzr1c_kUatWdYIUIA'
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -193,10 +195,8 @@ class RequestDetailState extends State<Request_Detail> {
           ),
         ),
         floatingActionButton:
-            Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          Column(
-            children: _links.map((link) => _urlButton(context, link)).toList(),
-          ),
+            Column(mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.end, children: [
+          _urlButton(context),
           SizedBox(
             height: 10,
           ),
@@ -217,7 +217,9 @@ class RequestDetailState extends State<Request_Detail> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Request_History(requestDetailModel: widget.requestDetailModel,)));
+                      builder: (context) => Request_History(
+                            requestDetailModel: widget.requestDetailModel,
+                          )));
             },
             heroTag: null,
           ),
@@ -241,7 +243,9 @@ class RequestDetailState extends State<Request_Detail> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Comment_Screen(requestDetailModel: widget.requestDetailModel,)));
+                      builder: (context) => Comment_Screen(
+                            requestDetailModel: widget.requestDetailModel,
+                          )));
             },
             heroTag: null,
           ),
@@ -310,28 +314,37 @@ class RequestDetailState extends State<Request_Detail> {
             height: 1.0, width: 130.0, color: Color.fromRGBO(200, 201, 196, 1)),
       );
 
-  Widget _urlButton(BuildContext context, String url) {
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      child: FloatingActionButton(
-        backgroundColor: Colors.purpleAccent.withOpacity(0.5),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.assignment,
-              size: 23,
-            ),
-            Text(
-              "Google\nForm",
-              style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-        onPressed: () => _handleURLButtonPress(context, url),
-        heroTag: null,
-      ),
+  Widget _urlButton(BuildContext context) {
+    return ScopedModel(
+      model: ServiceViewModel(),
+      child: ScopedModelDescendant<ServiceViewModel>(
+          builder: (BuildContext buildContext, Widget child, ServiceViewModel serviceViewModel) {
+            serviceViewModel.getService(widget.requestDetailModel.serviceId);
+            if(serviceViewModel.serviceModel != null && serviceViewModel.serviceModel.formLink != null){
+              return Container(
+                child: FloatingActionButton(
+                  backgroundColor: Colors.purpleAccent.withOpacity(0.5),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.assignment,
+                        size: 23,
+                      ),
+                      Text(
+                        "Google\nForm",
+                        style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  onPressed: () => _handleURLButtonPress(context, serviceViewModel.serviceModel.formLink),
+                  heroTag: null,
+                ),
+              );
+            }
+           return Container();
+          }),
     );
   }
 

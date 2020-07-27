@@ -23,6 +23,7 @@ class RequestState extends State<Request> {
         model: RequestViewModel(),
         child: ScopedModelDescendant<RequestViewModel>(builder:
             (BuildContext buildContext, Widget child, RequestViewModel model) {
+          model.getAllRequest();
           return ListView.builder(
               itemCount:
                   model.requestList != null ? model.requestList.length + 1 : 1,

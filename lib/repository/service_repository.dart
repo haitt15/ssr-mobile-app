@@ -15,6 +15,17 @@ class ServiceRepository {
     if (response.statusCode == 200) return response.body;
   }
 
+
+  Future<dynamic> getService(String serviceId) async {
+    var response = await http.get(
+      'https://ssrapiv3.azurewebsites.net/api/v1/Services/$serviceId',
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if (response.statusCode == 200) return response.body;
+  }
+
   Future<dynamic> registerService(
       String userName, String serviceId, String content) async {
     var response = await http.post(

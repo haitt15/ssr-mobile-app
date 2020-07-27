@@ -26,8 +26,7 @@ class RequestViewModel extends Model {
     }
     var reponse = await requestRepository.getAllRequest(username);
     if (reponse != null) {
-      reponse = jsonDecode(reponse);
-      listItem = reponse['data'];
+      listItem = jsonDecode(reponse) as List;
       requestList =
           listItem.map((e) => RequestDetailModel.fromJson(e)).toList();
 //      storage.write(key: "serviceId", value: );

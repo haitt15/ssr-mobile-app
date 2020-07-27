@@ -42,7 +42,7 @@ dependencies:
   speed_dial: ^0.0.1
   flutter_tabler_icons: ^1.0.2
   progress_dialog: ^1.2.4
-
+  webview_flutter: ^0.3.22+1
 
 dev_dependencies:
   flutter_test:
