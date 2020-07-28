@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart';
+import 'package:ssrapp/page/src/notification/Notification_View.dart';
 import 'package:ssrapp/page/src/profile/Profile_View.dart';
 import 'package:ssrapp/page/src/request/Request_View.dart';
 
@@ -58,7 +59,7 @@ class _NavigationIconScreenState extends State<NavigationIconScreen> {
 
     listWidget.add(GridHome());
     listWidget.add(Request());
-    listWidget.add(GridHome());
+    listWidget.add(NotificationView());
     listWidget.add(ProfileScreen());
 
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
