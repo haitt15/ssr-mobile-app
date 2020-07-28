@@ -3,14 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ssrapp/page/serviceDetail_screen.dart';
 import 'package:ssrapp/page/src/navigation/Navigation_View.dart';
 import 'package:ssrapp/page/progress_bar.dart';
 import 'package:ssrapp/page/src/login/Login_View.dart';
-import 'package:ssrapp/page/src/request/Request_View.dart';
-import 'package:ssrapp/page/src/request_detail/RequestDetail_View.dart';
-import 'package:ssrapp/page/src/service_detail/ServiceDetail_View.dart';
-import 'package:ssrapp/page/src/request_history/RequestHistory_View.dart';
+
 
 import 'main.dart';
 
