@@ -200,8 +200,7 @@ class _State extends State<Comment_Screen> {
                     ],
                   );
                 }
-                int length = model.commentList.length;
-                CommentModel dto = model.commentList[length - index];
+                CommentModel dto = model.commentList[index - 1];
                 return Material(
                   child: Expanded(
                     child: Padding(

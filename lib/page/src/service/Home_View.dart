@@ -25,8 +25,23 @@ class _GridHomeState extends State<GridHome> {
   void getMessage() {
     _firebaseMessaging.configure(
         onMessage: (Map<String, dynamic> message) async {
-      print('received message');
-      setState(() => _message = message["notification"]["body"]);
+      setState(() => _message = message["notification"]["title"]);
+      print("onMessage: $message");
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: ListTile(
+            title: Text(message['notification']['title']),
+            subtitle: Text(message['notification']['body']),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      );
     }, onResume: (Map<String, dynamic> message) async {
       print('on resume $message');
       setState(() => _message = message["notification"]["body"]);
@@ -104,7 +119,8 @@ class _GridHomeState extends State<GridHome> {
                                   height: 10,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.fromLTRB(10,0, 10, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(10, 0, 10, 0),
                                   child: Text(
                                     service.serviceNm,
                                     style: (TextStyle(
@@ -117,7 +133,8 @@ class _GridHomeState extends State<GridHome> {
                                   height: 5,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.fromLTRB(10,0, 10, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(10, 0, 10, 0),
                                   child: Text(
                                     service.descriptionService,
                                     style: (TextStyle(
