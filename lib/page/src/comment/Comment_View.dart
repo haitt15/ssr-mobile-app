@@ -121,13 +121,11 @@ class _State extends State<Comment_Screen> {
                               splashColor: Colors.grey, // splash color
                               onTap: () async {
                                 if(_txtComment.text.isNotEmpty){
-                                  await pr.show();
                                   bool flg = await model.addComment(widget.requestDetailModel.ticketId,_txtComment.text);
                                   if(flg){
                                     print("comment success");
                                   }
                                   _txtComment.text = "";
-                                  await pr.hide();
                                 }else{
                                   Fluttertoast.showToast(
                                       msg: "Please write something in comment",
