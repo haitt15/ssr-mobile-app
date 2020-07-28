@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ssrapp/page/src/request_history/RequestHistory_Model.dart';
 import 'package:ssrapp/page/src/request_history/RequestHistory_ViewModel.dart';
@@ -188,7 +189,7 @@ class RequestHistoryState extends State<Request_History> {
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      dto.updDatetime,
+                                      DateFormat('dd-MM-yyyy [hh:mm:ss]').format(DateTime.parse(dto.updDatetime)),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 17,

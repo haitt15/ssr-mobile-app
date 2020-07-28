@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ssrapp/app.dart';
 import 'package:ssrapp/main.dart';
@@ -19,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
   bool result;
-
+  ProgressDialog pr;
   TextEditingController _txtEmail;
   TextEditingController _txtPassword;
 
@@ -288,6 +289,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    pr = ProgressDialog(context,
+        type: ProgressDialogType.Normal, isDismissible: false);
+
+    pr.style(
+      message: "Login processing, wait a moment ...",
+      borderRadius: 10.0,
+      backgroundColor: Colors.black54,
+      elevation: 10.0,
+      messageTextStyle: TextStyle(color: Colors.white, fontSize: 16.0),
+    );
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
     ScreenUtil.instance =
         ScreenUtil(width: 1080, height: 1920, allowFontScaling: true);
@@ -411,18 +422,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
     LoginViewModel loginViewModel = LoginViewModel();
     var userInfo;
+    await pr.show();
     await loginViewModel.signInWithGoogle().then((value) => {userInfo = value});
-
     if (userInfo != null) {
       storage.write(key: "UserInfo", value: userInfo);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('UserInfo', userInfo);
+      pr.hide();
       await Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-              builder: (context) =>
-              new NavigationScreen()),
-              (router) => false);
+          MaterialPageRoute(builder: (context) => new NavigationScreen()),
+          (router) => false);
     } else {
       _showMsg(context, "Please sign in with FPT Education mail");
     }

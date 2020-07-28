@@ -6,6 +6,7 @@ import 'package:ssrapp/page/src/request_detail/RequestDetail_View.dart';
 import 'package:ssrapp/page/src/service/Service_Model.dart';
 import 'package:ssrapp/page/src/service_detail/ServiceDetail_ViewModel.dart';
 import 'package:ssrapp/repository/service_repository.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Service_Detail extends StatefulWidget {
   ServiceModel service;
@@ -113,16 +114,25 @@ class RequestDetailState extends State<Service_Detail> {
                     child: InkWell(
                       splashColor: Colors.grey, // splash color
                       onTap: () async {
-                        bool result = await model.register(
-                            widget.service.serviceID, _txtRequest.text);
+                        bool result;
+                        (_txtRequest.text.isEmpty)
+                            ? Fluttertoast.showToast(
+                                msg: "Please fill in request description",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                backgroundColor: Colors.black54,
+                                textColor: Colors.white,
+                                fontSize: 16.0)
+                            : result = await model.register(
+                                widget.service.serviceID, _txtRequest.text);
                         if (result) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Request_Detail(
-                                    requestDetailModel:
-                                    model.requestDetailModel,
-                                  )));
+                                        requestDetailModel:
+                                            model.requestDetailModel,
+                                      )));
                         }
                       }, // button pressed
                       child: Row(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ssrapp/page/src/comment/Comment_Model.dart';
@@ -27,9 +29,9 @@ class _State extends State<Comment_Screen> {
     pr.style(
       message: "Please wait a moment ...",
       borderRadius: 10.0,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black54,
       elevation: 10.0,
-      messageTextStyle: TextStyle(color: Colors.black, fontSize: 15.0),
+      messageTextStyle: TextStyle(color: Colors.white, fontSize: 15.0),
     );
     return Scaffold(
       appBar: AppBar(
@@ -126,6 +128,14 @@ class _State extends State<Comment_Screen> {
                                   }
                                   _txtComment.text = "";
                                   await pr.hide();
+                                }else{
+                                  Fluttertoast.showToast(
+                                      msg: "Please write something in comment",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.CENTER,
+                                      backgroundColor: Colors.black54,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0);
                                 }
                               },
                               child: Row(
@@ -236,7 +246,7 @@ class _State extends State<Comment_Screen> {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "\t" + dto.insDatetime,
+                                      "\t" + DateFormat('dd-MM-yyyy [hh:mm:ss]').format(DateTime.parse(dto.insDatetime)),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 15,

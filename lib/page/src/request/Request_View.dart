@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
+import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:ssrapp/page/src/request/Request_ViewModel.dart';
 
@@ -69,8 +70,16 @@ class RequestState extends State<Request> {
                                     )));
                       },
                       child: Card(
-                        elevation: 5,
-                        shadowColor: Colors.black,
+                        elevation: 3,
+                        shadowColor: (dto.status == "Waiting")
+                            ? Colors.amberAccent
+                            : (dto.status == "Rejected")
+                                ? Colors.redAccent
+                                : (dto.status == "Finished")
+                                    ? Colors.lightGreen
+                                    : (dto.status == "In-Progress")
+                                        ? Colors.lightBlue
+                                        : Colors.deepOrangeAccent,
                         child: Padding(
                           padding: EdgeInsets.all(5),
                           child: Stack(children: <Widget>[
@@ -85,7 +94,7 @@ class RequestState extends State<Request> {
                                         children: <Widget>[
                                           Row(
                                             children: <Widget>[
-                                              ticketIcon(),
+                                              ticketIcon(dto.status),
                                               SizedBox(
                                                 height: 10,
                                               ),
@@ -95,7 +104,6 @@ class RequestState extends State<Request> {
                                               SizedBox(
                                                 width: 10,
                                               ),
-                                              dueDatetimeIcon(),
                                               SizedBox(
                                                 width: 10,
                                               )
@@ -106,22 +114,21 @@ class RequestState extends State<Request> {
                                           ),
                                           Card(
                                             color: (dto.status == "Waiting")
-                                                ? Colors.yellow
+                                                ? Colors.amberAccent
                                                 : (dto.status == "Rejected")
-                                                    ? Colors.red
+                                                    ? Colors.redAccent
                                                     : (dto.status == "Finished")
-                                                        ? Colors.green
+                                                        ? Colors.lightGreen
                                                         : (dto.status ==
                                                                 "In-Progress")
-                                                            ? Colors.blue
+                                                            ? Colors.lightBlue
                                                             : Colors
                                                                 .deepOrangeAccent,
                                             shape: RoundedRectangleBorder(
                                               side: BorderSide(
-                                                  color: Colors.black,
-                                                  width: 1),
+                                                  color: Colors.grey, width: 1),
                                               borderRadius:
-                                                  BorderRadius.circular(5),
+                                                  BorderRadius.circular(8),
                                             ),
                                             child: Padding(
                                               padding:
@@ -129,8 +136,8 @@ class RequestState extends State<Request> {
                                               child: Text(
                                                 dto.status,
                                                 style: TextStyle(
-                                                  fontSize: 20,
-                                                ),
+                                                    fontSize: 20,
+                                                    color: Colors.white),
                                               ),
                                             ),
                                           ),
@@ -163,15 +170,23 @@ class RequestState extends State<Request> {
         child: Container(height: 1.0, width: size, color: Colors.grey),
       );
 
-  Widget ticketIcon() {
+  Widget ticketIcon(String status) {
     return Padding(
       padding: const EdgeInsets.only(left: 15.0),
       child: Align(
           alignment: Alignment.centerLeft,
           child: Icon(
             Icons.label,
-            size: 30,
-            color: Colors.black54,
+            size: 25,
+            color: (status == "Waiting")
+                ? Colors.amberAccent
+                : (status == "Rejected")
+                    ? Colors.redAccent
+                    : (status == "Finished")
+                        ? Colors.lightGreen
+                        : (status == "In-Progress")
+                            ? Colors.lightBlue
+                            : Colors.deepOrangeAccent,
           )),
     );
   }
@@ -195,22 +210,35 @@ class RequestState extends State<Request> {
   }
 
   Widget dueDatetime(String time) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: RichText(
-        text: TextSpan(
-          text: "Due Datetime: ",
-          style: TextStyle(
-              color: Colors.red, fontSize: 12, fontWeight: FontWeight.bold),
-          children: <TextSpan>[
-            TextSpan(
-                text: '\n' + time,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 13)),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.calendar_today,size: 18,),
+              Text(" " + DateFormat('dd-MM-yyyy').format(DateTime.parse(time)),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 14)),
+            ],
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              Icon(Icons.access_time,size: 18,),
+              Text(" " + DateFormat('hh:mm:ss').format(DateTime.parse(time)),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 14)),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -230,27 +258,43 @@ class RequestState extends State<Request> {
       alignment: Alignment.centerLeft,
       child: Padding(
         padding: const EdgeInsets.only(left: 20.0),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            RichText(
-              textAlign: TextAlign.left,
-              text: TextSpan(
-                text: '\n' + "Service: " + service,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+            Row(
+              children: [
+                Icon(
+                  Icons.dvr,
+                  size: 20,
                 ),
-                children: <TextSpan>[
-                  TextSpan(
-                      text: '\n' + "Department: " + department,
-                      style: TextStyle(
-                          color: Colors.grey,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 13,
-                          fontWeight: FontWeight.bold)),
-                ],
-              ),
+                Text(
+                  "  Service: " + service,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.assignment,
+                  size: 20,
+                ),
+                Text(
+                  "  Department: " + department,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

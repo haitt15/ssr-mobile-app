@@ -2,15 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:speed_dial/speed_dial.dart';
 import 'package:ssrapp/page/src/WebViewContainer/WebViewContainer.dart';
 import 'package:ssrapp/page/src/comment/Comment_View.dart';
 import 'package:ssrapp/page/src/request_detail/RequestDetail_Model.dart';
 import 'package:ssrapp/page/src/request_history/RequestHistory_View.dart';
 import 'package:ssrapp/page/src/service/Service_ViewModel.dart';
 
-import '../service/Home_ViewModel.dart';
 
 class Request_Detail extends StatefulWidget {
   RequestDetailModel requestDetailModel;
@@ -139,7 +138,7 @@ class RequestDetailState extends State<Request_Detail> {
               ),
               _createHeader("Status", 95),
               SizedBox(height: 12),
-              _getData(widget.requestDetailModel.status),
+              _getData(widget.requestDetailModel.status, 20),
               SizedBox(
                 height: 7,
               ),
@@ -149,7 +148,34 @@ class RequestDetailState extends State<Request_Detail> {
               ),
               _createHeader("Due DateTime", 145),
               SizedBox(height: 12),
-              _getData(widget.requestDetailModel.dueDatetime),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                            Icons.calendar_today,size: 23
+                        ),
+                        _getData(DateFormat('dd-MM-yyyy').format(DateTime.parse(widget.requestDetailModel.dueDatetime)),10),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Icon(
+                            Icons.access_time,size: 23,
+                        ),
+                        _getData(DateFormat('hh:mm:ss').format(DateTime.parse(widget.requestDetailModel.dueDatetime)),10),
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
+
               SizedBox(
                 height: 7,
               ),
@@ -292,17 +318,17 @@ class RequestDetailState extends State<Request_Detail> {
         ],
       ));
 
-  Widget _getData(String data) => Stack(
+  Widget _getData(String data, double padding) => Stack(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(left: 20.0, right: 20),
+            padding: EdgeInsets.only(left: padding, right: padding),
             child: Text(
               data,
               style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w800,
                   fontStyle: FontStyle.normal,
-                  fontSize: 20.0),
+                  fontSize: 19.0),
             ),
           )
         ],
