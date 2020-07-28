@@ -69,7 +69,7 @@ class RequestDetailState extends State<Service_Detail> {
                 SizedBox(
                   height: 12,
                 ),
-                _createHeader("Department about Department", 260),
+                _createHeader("Description about Department", 260),
                 SizedBox(
                   height: 12,
                 ),

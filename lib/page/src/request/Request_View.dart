@@ -214,6 +214,18 @@ class RequestState extends State<Request> {
         children: [
           Row(
             children: [
+              Text("Due Datetime: ",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                      fontSize: 14)),
+            ],
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
               Icon(Icons.calendar_today,size: 18,),
               Text(" " + DateFormat('dd-MM-yyyy').format(DateTime.parse(time)),
                   style: TextStyle(
